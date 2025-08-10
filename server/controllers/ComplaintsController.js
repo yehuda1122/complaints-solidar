@@ -1,6 +1,6 @@
 // import express from "express";
 
-import { writeComplaintsToMongoDB } from "../services/ComplaintsDAL.js";
+import { writeComplaintsToMongoDB ,getComplaintsFromMongoDB} from "../services/ComplaintsDAL.js";
 
 export async function craetComplaints(req, res) {
   const newComplaints = req.body;
@@ -8,7 +8,6 @@ export async function craetComplaints(req, res) {
   const massege = newComplaints.massege;
   const creatAt = new Date().toISOString();
   console.log(newComplaints);
-
   try {
     await writeComplaintsToMongoDB({
       category: category,
@@ -22,8 +21,9 @@ export async function craetComplaints(req, res) {
 }
 
 export async function getAllComplaints(req, res) {
-  const body = req.body.password;
-  if (body === process.env.password) {
+  const body = req.body;
+  console.log(body);
+  if (body.password === process.env.password) {
     try {
       const respons = await getComplaintsFromMongoDB();
       res.status(200).json(respons);

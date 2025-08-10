@@ -10,7 +10,7 @@ export const getComplaints = express.Router();
 
 
 
-getComplaints.get("/", getAllComplaints);
+getComplaints.post("/", getAllComplaints);
 routComplaints.post("/",craetComplaints);
 
 
