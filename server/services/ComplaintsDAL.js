@@ -9,14 +9,14 @@ async function writeComplaintsToMongoDB(newComplaints) {
     return await db.collection("complaints").insertOne(newComplaints)
 }
 
-// async function getRiddlesFromMongoDB() {
-//     const db = await connect();
-//     const data = await db.collection("riddles").find().toArray();
-//     return data
-// }
+async function getComplaintsFromMongoDB() {
+    const db = await connect();
+    const data = await db.collection("complaints").find().toArray();
+    return data
+}
 
 
 export {
-    // getRiddlesFromMongoDB,
-    writeComplaintsToMongoDB,
+    getComplaintsFromMongoDB,
+    writeComplaintsToMongoDB
 }

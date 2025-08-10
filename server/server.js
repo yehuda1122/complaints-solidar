@@ -1,12 +1,13 @@
 
 import express from "express"
-import {routComplaints} from "./routs/complaintsRout.js";
+import {routComplaints,getComplaints} from "./routs/complaintsRout.js";
 
 const app = express()
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("./public"))
 app.use("/submit",routComplaints)
+app.use("/get",getComplaints)
 // app.use("/player",plyeerRouter)
 
 const Port = process.env.PORT || 3003
